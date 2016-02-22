@@ -1,5 +1,5 @@
 pkgname=chrome-remote-desktop
-pkgver=47.0.2526.18
+pkgver=49.0.2623.40
 pkgrel=1
 pkgdesc="Allows you to securely access your computer over the Internet through Chrome."
 url="https://chrome.google.com/webstore/detail/gbchcmhmhahfdphkhkmpfmihenigjmpp"
@@ -25,11 +25,6 @@ prepare() {
   msg2 'Extracting data from debian package'
   bsdtar -xf data.tar.gz -C .
 
-  msg2 'Patching Python script'
-  sed -e '1 s/python/python2/' \
-      -e '/^.*sudo_command =/ s/"gksudo .*"/"pkexec"/' \
-      -e '/^.*command =/ s/s -- sh -c/s sh -c/' \
-      -i opt/google/chrome-remote-desktop/chrome-remote-desktop
 }
 
 build() {
